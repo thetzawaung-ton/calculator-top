@@ -13,3 +13,19 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 }
+
+let firstNum;
+let operator;
+let secNum;
+
+function operate(firstNum, operator, secNum) {
+    if(operator === "+"){
+        return add(firstNum, secNum);
+    } else if(operator === "-"){
+        return substract(firstNum, secNum);
+    } else if (operator === "*") {
+        return multiply(firstNum, secNum);
+    } else if(operator === "/"){
+        return divide(firstNum, secNum);
+    }
+}
