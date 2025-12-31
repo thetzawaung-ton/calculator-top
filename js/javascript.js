@@ -14,9 +14,10 @@ function divide(a, b) {
     return a / b;
 }
 
+let number;
 let firstNum;
-let operator;
 let secNum;
+let symbol;
 
 function operate(firstNum, operator, secNum) {
     if(operator === "+"){
@@ -32,12 +33,27 @@ function operate(firstNum, operator, secNum) {
 
 const digits = document.querySelectorAll(".digit");
 const display = document.querySelector(".display");
+const operators = document.querySelectorAll('.operator')
 display.textContent = "";
-let number = "";
+const result = document.querySelector(".result");
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
         display.textContent += digit.textContent;
         number = Number(display.textContent);
     })
+})
+
+operators.forEach(operator => {
+    operator.addEventListener("click", function() {
+        symbol = operator.textContent;
+        firstNum = number;
+        display.textContent = "";
+    })
+})
+
+result.addEventListener("click", function() {
+    secNum = number;
+    let result = operate(firstNum, symbol, secNum);
+    display.textContent = result;
 })
