@@ -29,3 +29,15 @@ function operate(firstNum, operator, secNum) {
         return divide(firstNum, secNum);
     }
 }
+
+const digits = document.querySelectorAll(".digit");
+const display = document.querySelector(".display");
+display.textContent = "";
+let number = "";
+
+digits.forEach(digit => {
+    digit.addEventListener("click", function() {
+        display.textContent += digit.textContent;
+        number = Number(display.textContent);
+    })
+})
