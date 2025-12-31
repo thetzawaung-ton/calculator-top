@@ -42,6 +42,7 @@ clear.addEventListener("click", function() {
     display.textContent = "";
     firstNum = null;
     secNum = null;
+    symbol = null;
 })
 
 digits.forEach(digit => {
@@ -53,9 +54,17 @@ digits.forEach(digit => {
 
 operators.forEach(operator => {
     operator.addEventListener("click", function() {
-        symbol = operator.textContent;
-        firstNum = number;
-        display.textContent = "";
+        if (symbol == null) {
+            symbol = operator.textContent;
+            firstNum = number;
+            display.textContent = "";
+        } else {
+            secNum = number;
+            let result = operate(firstNum, symbol, secNum);
+            symbol = operator.textContent;
+            firstNum = result;
+            display.textContent = "";
+        }
     })
 })
 
