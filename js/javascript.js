@@ -36,6 +36,13 @@ const display = document.querySelector(".display");
 const operators = document.querySelectorAll('.operator')
 display.textContent = "";
 const result = document.querySelector(".result");
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", function() {
+    display.textContent = "";
+    firstNum = null;
+    secNum = null;
+})
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
