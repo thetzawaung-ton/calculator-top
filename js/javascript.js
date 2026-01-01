@@ -14,10 +14,10 @@ function divide(a, b) {
     return a / b;
 }
 
-let number;
+let number = null;
 let firstNum;
 let secNum;
-let symbol;
+let symbol = null;
 
 function operate(firstNum, operator, secNum) {
     if(operator === "+"){
@@ -43,6 +43,7 @@ clear.addEventListener("click", function() {
     firstNum = null;
     secNum = null;
     symbol = null;
+    number = null;
 })
 
 digits.forEach(digit => {
