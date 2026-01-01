@@ -47,6 +47,9 @@ clear.addEventListener("click", function() {
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
+        if((Number(display.textContent)) === firstNum) {
+            display.textContent = "";
+        }
         display.textContent += digit.textContent;
         number = Number(display.textContent);
     })
@@ -57,13 +60,15 @@ operators.forEach(operator => {
         if (symbol == null) {
             symbol = operator.textContent;
             firstNum = number;
-            display.textContent = "";
         } else {
             secNum = number;
             let result = operate(firstNum, symbol, secNum);
+            if(!Number.isInteger(result)) {
+                result = Math.round(result * 100) / 100;
+            }
             symbol = operator.textContent;
             firstNum = result;
-            display.textContent = "";
+            display.textContent = result;
         }
     })
 })
@@ -71,5 +76,8 @@ operators.forEach(operator => {
 result.addEventListener("click", function() {
     secNum = number;
     let result = operate(firstNum, symbol, secNum);
+    if(!Number.isInteger(result)) {
+        result = Math.round(result * 100) / 100;
+    }
     display.textContent = result;
 })
