@@ -15,10 +15,23 @@ body{
     padding: 5px;
 }
 
+.operator {
+    background-color: #8d91e7;
+}
+
+.result {
+    background-color: #DDE320;
+}
+
+.clear {
+    background-color: #D93423;
+}
+
 button {
     width: 100px;
     height: 100px;
     font-size: 35px;
+    border-radius: 10px;
 }
 
 .display{
