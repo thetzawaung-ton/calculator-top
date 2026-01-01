@@ -19,6 +19,7 @@ let firstNum;
 let secNum;
 let symbol = null;
 let operatorIsClicked = false;
+let resetDisplay = false;
 
 function operate(firstNum, operator, secNum) {
     if(operator === "+"){
@@ -50,12 +51,13 @@ clear.addEventListener("click", function() {
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
-        if(Number(display.textContent) === firstNum || Number(display.textContent) === 0) {
+        if(resetDisplay || Number(display.textContent) === 0) {
             display.textContent = "";
         }
         display.textContent += digit.textContent;
         number = Number(display.textContent);
         operatorIsClicked = false;
+        resetDisplay = false;
     })
 })
 
@@ -84,6 +86,7 @@ operators.forEach(operator => {
             }
         }
         operatorIsClicked = true;
+        resetDisplay = true;
     })
 })
 
