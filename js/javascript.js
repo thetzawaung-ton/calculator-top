@@ -18,6 +18,7 @@ let number = null;
 let firstNum;
 let secNum;
 let symbol = null;
+let operatorIsClicked = false;
 
 function operate(firstNum, operator, secNum) {
     if(operator === "+"){
@@ -44,6 +45,7 @@ clear.addEventListener("click", function() {
     secNum = null;
     symbol = null;
     number = null;
+    operatorIsClicked = false;
 })
 
 digits.forEach(digit => {
@@ -53,11 +55,17 @@ digits.forEach(digit => {
         }
         display.textContent += digit.textContent;
         number = Number(display.textContent);
+        operatorIsClicked = false;
     })
 })
 
 operators.forEach(operator => {
     operator.addEventListener("click", function() {
+        if(symbol !== null && operatorIsClicked) {
+            symbol = operator.textContent;
+            return;
+        }
+
         if (symbol == null) {
             symbol = operator.textContent;
             firstNum = number;
@@ -75,6 +83,7 @@ operators.forEach(operator => {
                 display.textContent = result;
             }
         }
+        operatorIsClicked = true;
     })
 })
 
@@ -98,4 +107,5 @@ result.addEventListener("click", function() {
         }
         display.textContent = result;
     }
+    operatorIsClicked = false;
 })
