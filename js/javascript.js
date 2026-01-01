@@ -34,12 +34,12 @@ function operate(firstNum, operator, secNum) {
 const digits = document.querySelectorAll(".digit");
 const display = document.querySelector(".display");
 const operators = document.querySelectorAll('.operator')
-display.textContent = "";
+display.textContent = "0";
 const result = document.querySelector(".result");
 const clear = document.querySelector(".clear");
 
 clear.addEventListener("click", function() {
-    display.textContent = "";
+    display.textContent = "0";
     firstNum = null;
     secNum = null;
     symbol = null;
@@ -47,7 +47,7 @@ clear.addEventListener("click", function() {
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
-        if((Number(display.textContent)) === firstNum) {
+        if(Number(display.textContent) === firstNum || Number(display.textContent) === 0) {
             display.textContent = "";
         }
         display.textContent += digit.textContent;
@@ -74,6 +74,15 @@ operators.forEach(operator => {
 })
 
 result.addEventListener("click", function() {
+    if(!firstNum) {
+        firstNum = 0;
+        symbol = "+";
+    }
+    if(!firstNum && !number) {
+        firstNum = 0;
+        number = 0;
+        symbol = "+";
+    }
     secNum = number;
     let result = operate(firstNum, symbol, secNum);
     if(!Number.isInteger(result)) {
