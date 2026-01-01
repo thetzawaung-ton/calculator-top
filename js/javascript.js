@@ -2,7 +2,7 @@ function add(a, b) {
     return a + b;
 }
 
-function substract(a, b) {
+function subtract(a, b) {
     return a - b;
 }
 
@@ -23,7 +23,7 @@ function operate(firstNum, operator, secNum) {
     if(operator === "+"){
         return add(firstNum, secNum);
     } else if(operator === "-"){
-        return substract(firstNum, secNum);
+        return subtract(firstNum, secNum);
     } else if (operator === "*") {
         return multiply(firstNum, secNum);
     } else if(operator === "/"){
