@@ -63,13 +63,17 @@ operators.forEach(operator => {
             firstNum = number;
         } else {
             secNum = number;
-            let result = operate(firstNum, symbol, secNum);
-            if(!Number.isInteger(result)) {
-                result = Math.round(result * 100) / 100;
+            if(symbol === "/" && secNum === 0) {
+                display.textContent = "Can't divided by 0";
+            } else {
+                let result = operate(firstNum, symbol, secNum);
+                if(!Number.isInteger(result)) {
+                    result = Math.round(result * 100) / 100;
+                }
+                symbol = operator.textContent;
+                firstNum = result;
+                display.textContent = result;
             }
-            symbol = operator.textContent;
-            firstNum = result;
-            display.textContent = result;
         }
     })
 })
@@ -85,9 +89,13 @@ result.addEventListener("click", function() {
         symbol = "+";
     }
     secNum = number;
-    let result = operate(firstNum, symbol, secNum);
-    if(!Number.isInteger(result)) {
-        result = Math.round(result * 100) / 100;
+    if(symbol === "/" && secNum === 0) {
+        display.textContent = "Can't divided by 0";
+    } else {
+        let result = operate(firstNum, symbol, secNum);
+        if(!Number.isInteger(result)) {
+            result = Math.round(result * 100) / 100;
+        }
+        display.textContent = result;
     }
-    display.textContent = result;
 })
