@@ -42,3 +42,7 @@ button {
     line-height: 100px;
     background-color: #83b07e;
 }
+
+.grow {
+    flex-grow: 2;
+}
