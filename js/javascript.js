@@ -112,3 +112,15 @@ result.addEventListener("click", function() {
     }
     operatorIsClicked = false;
 })
+
+const backspace = document.querySelector(".backspace");
+backspace.addEventListener("click", function() {
+    if(display.textContent.length === 1) {
+        display.textContent = "0";
+        number = 0;
+        return;
+    }
+
+    display.textContent = display.textContent.substring(0, display.textContent.length - 1);
+    number = Number(display.textContent);
+})
