@@ -20,6 +20,7 @@ let secNum;
 let symbol = null;
 let operatorIsClicked = false;
 let resetDisplay = false;
+let decimalIsClicked = false;
 
 function operate(firstNum, operator, secNum) {
     if(operator === "+"){
@@ -47,11 +48,12 @@ clear.addEventListener("click", function() {
     symbol = null;
     number = null;
     operatorIsClicked = false;
+    decimalIsClicked = false;
 })
 
 digits.forEach(digit => {
     digit.addEventListener("click", function() {
-        if(resetDisplay || Number(display.textContent) === 0) {
+        if(resetDisplay || display.textContent === "0") {
             display.textContent = "";
         }
         display.textContent += digit.textContent;
@@ -87,6 +89,7 @@ operators.forEach(operator => {
         }
         operatorIsClicked = true;
         resetDisplay = true;
+        decimalIsClicked = false;
     })
 })
 
@@ -123,4 +126,14 @@ backspace.addEventListener("click", function() {
 
     display.textContent = display.textContent.substring(0, display.textContent.length - 1);
     number = Number(display.textContent);
+})
+
+const decimal = document.querySelector(".decimal");
+decimal.addEventListener("click", function() {
+    if(decimalIsClicked) {
+        return;
+    }
+
+    display.textContent += ".";
+    decimalIsClicked = true;
 })
