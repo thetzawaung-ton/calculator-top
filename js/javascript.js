@@ -49,6 +49,10 @@ clear.addEventListener("click", function() {
     number = null;
     operatorIsClicked = false;
     decimalIsClicked = false;
+
+    operators.forEach(operator => {
+            operator.classList.remove('active');
+    })
 })
 
 digits.forEach(digit => {
@@ -136,4 +140,15 @@ decimal.addEventListener("click", function() {
 
     display.textContent += ".";
     decimalIsClicked = true;
+})
+
+const container = document.querySelector('.container');
+container.addEventListener('click', function(event) {
+    if(event.target.classList.contains('operator')) {
+        operators.forEach(operator => {
+            operator.classList.remove('active');
+        })
+
+        event.target.classList.add('active');
+    }
 })
