@@ -142,8 +142,13 @@ decimal.addEventListener("click", function() {
         return;
     }
 
+    if(operatorIsClicked) {
+        display.textContent = "0";
+    }
+
     display.textContent += ".";
     decimalIsClicked = true;
+    resetDisplay = false;
 })
 
 const container = document.querySelector('.container');
