@@ -118,6 +118,10 @@ result.addEventListener("click", function() {
         display.textContent = result;
     }
     operatorIsClicked = false;
+
+    operators.forEach(operator => {
+            operator.classList.remove('active');
+    })
 })
 
 const backspace = document.querySelector(".backspace");
